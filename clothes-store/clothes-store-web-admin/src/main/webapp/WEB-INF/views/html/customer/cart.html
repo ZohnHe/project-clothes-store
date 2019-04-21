@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Cart</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Wish shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/cart.css">
+<link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
+			<div class="logo"><a href="#">衣衣布社</a></div>
+			<nav class="main_nav">
+				<ul>
+					<li><a href="index.html" style="font-size:18px">首页</a></li>
+					<li><a href="categories.html" style="font-size:18px">裙子</a></li>
+					<li><a href="categories.html" style="font-size:18px">上衣</a></li>
+					<li><a href="categories.html" style="font-size:18px">外套</a></li>
+				</ul>
+			</nav>
+			<div class="header_content ml-auto">
+				<div class="search header_search">
+					<form action="#">
+						<input type="search" class="search_input" required="required">
+						<button type="submit" id="search_button" class="search_button"><img src="images/magnifying-glass.svg" alt=""></button>
+					</form>
+				</div>
+				<div class="shopping">
+					<!-- Cart -->
+					<a href="#">
+						<div class="cart">
+							<img src="images/shopping-bag.svg" alt="">
+							<div class="cart_num_container">
+								<div class="cart_num_inner">
+									<div class="cart_num">1</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					<!-- Star -->
+					<a href="#">
+						<div class="star">
+							<img src="images/star.svg" alt="">
+							<div class="star_num_container">
+								<div class="star_num_inner">
+									<div class="star_num">0</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					<!-- Avatar -->
+					<a href="#">
+						<div class="avatar">
+							<img src="images/avatar.svg" alt="">
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+		<div class="logo menu_mm"><a href="#">Wish</a></div>
+		<div class="search">
+			<form action="#">
+				<input type="search" class="search_input menu_mm" required="required">
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="images/magnifying-glass.svg" alt=""></button>
+			</form>
+		</div>
+		<nav class="menu_nav">
+			<ul class="menu_mm">
+				<li class="menu_mm"><a href="index.html">home</a></li>
+				<li class="menu_mm"><a href="#">clothes</a></li>
+				<li class="menu_mm"><a href="#">accessories</a></li>
+				<li class="menu_mm"><a href="#">lingerie</a></li>
+				<li class="menu_mm"><a href="#">contact</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/cart.jpg" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_container">
+						<div class="home_content">
+							<div class="home_title">Shopping Cart</div>
+							<div class="breadcrumbs">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li>Shopping Cart</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Cart -->
+
+	<div class="cart_container">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="cart_title">我的购物车</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="checkbox" value="" />
+						<div class="cart_bar_title_name">商品</div>
+						<div class="cart_bar_title_content ml-auto">
+							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
+								<div class="cart_bar_title_price">价格</div>
+								<div class="cart_bar_title_quantity">数量</div>
+								<div class="cart_bar_title_total">总金额</div>
+								<div class="cart_bar_title_button">删除</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_products">
+						<ul>
+							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+								
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="checkbox" value="" />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!-- Product Image -->
+								<div class="cart_product_image"><img src="images/cart_product_1.jpg" alt=""></div>
+								<!-- Product Name -->
+								<div class="cart_product_name"><a href="product.html">2 Piece Swimsuit</a></div>
+								<div class="cart_product_info ml-auto">
+									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
+										<!-- Product Price -->
+										<div class="cart_product_price">35.00</div>
+										<!-- Product Quantity -->
+										<div class="product_quantity_container">
+											<div class="product_quantity clearfix">
+												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+												<div class="quantity_buttons">
+													<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+													<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+												</div>
+											</div>
+										</div>
+										<!-- Products Total Price -->
+										<div class="cart_product_total">35.00</div>
+										<!-- Product Cart Trash Button -->
+										<div class="cart_product_button">
+											<button class="cart_product_remove"><img src="images/trash.png" alt=""></button>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
+						<button class="button_update cart_button_2 ml-md-auto">结算</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Newsletter -->
+
+	
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="footer_logo"><a href="#">衣衣布社</a></div>
+					<nav class="footer_nav">
+						<ul>
+							<li><a href="#" style="font-size:18px">首页</a></li>
+							<li><a href="categories.html" style="font-size:18px">裙子</a></li>
+							<li><a href="categories.html" style="font-size:18px">上衣</a></li>
+							<li><a href="categories.html" style="font-size:18px">外套</a></li>
+						</ul>
+					</nav>
+					
+					<div class="copyright">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> Colorlib -  More Templates - Collect from </a>
+</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="js/cart_custom.js"></script>
+</body>
+</html>

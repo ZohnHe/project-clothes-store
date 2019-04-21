@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MyShop——登录</title>
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/ziy.css">
+    <!--引入CSS-->
+    <link rel="stylesheet" type="text/css" href="/static/assets/plugins/verify/css/verify.css">
+    <!--  <script src="js/jquery-1.11.3.min.js" ></script>
+    <script src="js/index.js" ></script>  -->
+    <!-- <script type="text/javascript" src="js/jquery1.42.min.js"></script> -->
+    <!--
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+     <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.source.js"></script> -->
+</head>
+<body>
+<!--dengl-->
+<div class="beij_center">
+    <div class="dengl_logo">
+        <img src="/static/assets/images/log.bmp"/>
+    </div>
+</div>
+<div style="margin:-3px">
+
+    <div class="banner_xin">
+        <img src="/static/assets/images/logo_11.jpg">
+    </div>
+    <div class="beij_center dengl_jvz">
+        <div class="login_form">
+            <div class="login_tab">
+                <h2>欢迎登录</h2>
+                <div class="dengl_erwm">
+                    <a href="#"><img src="/static/assets/images/er_wm.png"></a>
+                    <div class="tanc_erwm_kuang">
+                        <img src="/static/assets/images/mb_wangid.png">
+                        <div class="qrcode_panel">
+                            <ul>
+                                <li class="fore1">
+                                    <span>打开</span>
+                                    <a href="#" target="_blank"> <span class="red">衣衣布社</span></a>
+                                </li>
+                                <li>扫描二维码</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="post">
+
+                <div class="kengl_kuang">
+                    <div class="txt_kuang">
+                        <input type="text" class="itxt" id="loginId" name="loginId"  placeholder="邮箱/用户名/手机">
+                        <input type="password" class="itxt" id="loginPwd" name="loginPwd"  placeholder="密码">
+
+                        <div id="mpanel1" style="margin-left: 23px" >
+                        </div>
+                        <input type="hidden" id="verify" name="verify" />
+                    </div>
+                    <div class="remember">
+                        <div class="fl">
+                            <input type="checkbox" id="remember" name="remember" >
+                            <label>自动登录</label>
+                        </div>
+                        <div class="fr">
+                            <a href="#" class="fl" target="_blank" title="忘记密码">忘记密码?</a>
+                        </div>
+                    </div>
+                    <input type="button" id="loginBtn" tabindex="5" value="登 录" class="btnnuw">
+                </div>
+            </form>
+            <div class="corp_login">
+                <div class="mingb_shoq"><a href="#">名榜授权登录！</a></div>
+                <div class="regist_link"><a href="register.html" target="_blank"><b></b>立即注册</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="jianj_dib">
+    <div class="beia_hao">
+        <p>京ICP备：123456789号  </p>
+        <p class="gonga_bei">京公网安备：123456789号</p>
+    </div>
+</div>
+<script src="/static/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<!--引入JS-->
+<script type="text/javascript" src="/static/assets/plugins/verify/js/verify.min.js"></script>
+
+<script src="/static/assets/plugins/jquery.cookie.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/jquery.md5.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $('#mpanel1').codeVerify({
+            //常规验证码type=1， 运算验证码type=2
+            type : 2,
+            //验证码宽度
+            width : '290px',
+            //验证码高度
+            height : '42px',
+            //......更多参数设置请查阅文档
+            //提交按钮的id名称
+            btnId : 'loginBtn',
+            //验证成功以后的回调
+            success : function() {
+                $("#verify").attr("value","ok");
+            },
+            //验证码不通过
+            error:function () {
+                alert('验证码不正确！');
+                $("#verify").attr("value",null);
+            }
+        });
+        //记住密码后，显示账号,密码
+        $(document).ready(
+            function () {
+                if($.cookie("remember")){
+                    $("#loginId").val($.cookie("loginId"));
+                    $("#loginPwd").val($.cookie("loginPwd"));
+                    if($.cookie("remember")){
+                        $("#remember").prop("checked",true);
+                    }
+                }
+            }
+        );
+        //异步登录
+        $("#loginBtn").click(function () {
+            var loginId = $("#loginId").val();
+            var loginPwd =$("#loginPwd").val();
+            var verify = $("#verify").val();
+            var salt;
+            if(loginId.trim() == ""){
+               /* $("#errormsg").text("用户名不能为空");*/
+                alert("用户名不能为空");
+                return;
+            }
+            if(loginPwd.trim() == ""){
+                /*$("#errormsg").text("密码不能为空");*/
+                alert("密码不能为空");
+                return;
+            }
+            //判断用户是否修改了密码框中的密码
+            if(loginPwd != $.cookie("loginPwd")){
+                //设置为同步请求，以免后面的 ajax 先执行
+                $.ajaxSettings.async = false;
+                //获取后台的盐值
+                $.get("/customers/salt?loginId=" + loginId,function (data) {
+                    if(data != null){
+                        salt = data;
+                    }
+                })
+                //设置为异步请求
+                $.ajaxSettings.async = true;
+                //密码加盐
+                loginPwd = $.md5(loginPwd);
+                loginPwd = $.md5(loginPwd + salt);
+            }
+
+            //登录
+            $.ajax({
+                type:"post",
+                url:"/customers/login",
+                data:{loginId:loginId,loginPwd:loginPwd,verify:verify},
+                dataType:"json",
+                success:function (data) {
+                    var json = data;
+                    if(json.success == "1"){
+                        //勾选了记住密码
+                        if($("#remember").prop("checked")){
+                            $.cookie("loginId",loginId,{expired:7});
+                            $.cookie("loginPwd",loginPwd,{expired:7});
+                            $.cookie("remember",true,{expired:7});
+                        }
+                        //没勾选，删除 cookie
+                        else{
+                            $.cookie("loginId","",{expired:-1});
+                            $.cookie("loginPwd","",{expired:-1});
+                            $.cookie("remember",false,{expired:-1});
+                        }
+                        window.location.href="/customers/index";
+                    }else if (json.success == "0"){
+                       /* $("#error").prop("class","alert alert-danger")
+                        $("#errormsg").text("验证码校验失败！" )*/
+                       alert("验证码校验失败");
+                    }
+                    else if (json.success == "2"){
+                       /* $("#error").prop("class","alert alert-danger")
+                        $("#errormsg").text("账号或密码错误！" )*/
+                       alert("账号或密码错误");
+                    }
+                }
+            });
+        })
+    })
+
+</script>
+</body>
+</html>

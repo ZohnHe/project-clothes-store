@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Product</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Wish shop project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/assets/styles/bootstrap4/bootstrap.min.css">
+    <link href="/static/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/styles/product.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/styles/product_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+
+    <!-- Header -->
+
+    <header class="header">
+        <div class="header_inner d-flex flex-row align-items-center justify-content-start">
+            <div class="dengl_logo">
+                <img src="/static/assets/images/log.bmp"/>
+            </div>
+            <nav class="main_nav">
+                <ul>
+                    <li><a href="index.html" style="font-size:18px">首页</a></li>
+                    <li><a href="categories.html" style="font-size:18px">裙子</a></li>
+                    <li><a href="categories.html" style="font-size:18px"> 裤子</a></li>
+                    <li><a href="categories.html" style="font-size:18px">上衣</a></li>
+                    <li><a href="categories.html" style="font-size:18px">外套</a></li>
+                </ul>
+            </nav>
+            <div class="header_content ml-auto">
+                <div class="search header_search">
+                    <form action="#">
+                        <input type="search" class="search_input" required="required">
+                        <button type="submit" id="search_button" class="search_button"><img src="/static/assets/images/magnifying-glass.svg" alt=""></button>
+                    </form>
+                </div>
+                <div class="shopping">
+                    <!-- Cart -->
+                    <a href="#">
+                        <div class="cart">
+                            <img src="/static/assets/images/shopping-bag.svg" alt="">
+                            <div class="cart_num_container">
+                                <div class="cart_num_inner">
+                                    <div class="cart_num">1</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Star -->
+                    <a href="#">
+                        <div class="star">
+                            <img src="/static/assets/images/star.svg" alt="">
+                            <div class="star_num_container">
+                                <div class="star_num_inner">
+                                    <div class="star_num">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Avatar -->
+                    <a href="#">
+                        <div class="avatar">
+                            <img src="/static/assets/images/avatar.svg" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+        </div>
+    </header>
+
+    <!-- Menu -->
+
+    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+        <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+        <div class="logo menu_mm"><a href="#">衣衣布设</a></div>
+        <div class="search">
+            <form action="#">
+                <input type="search" class="search_input menu_mm" required="required">
+                <button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="/static/assets/images/magnifying-glass.svg" alt=""></button>
+            </form>
+        </div>
+        <nav class="menu_nav">
+            <ul>
+                <li><a href="index.html" style="font-size:18px">首页</a></li>
+                <li><a href="categories.html" style="font-size:18px">裙子</a></li>
+                <li><a href="categories.html" style="font-size:18px"> 裤子</a></li>
+                <li><a href="categories.html" style="font-size:18px">上衣</a></li>
+                <li><a href="categories.html" style="font-size:18px">外套</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Home -->
+
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll" data-image-src="/static/assets/images/product.jpg" data-speed="0.8"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_container">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product -->
+
+    <div class="product">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="current_page">
+                    </div>
+                </div>
+            </div>
+            <div class="row product_row">
+
+                <!-- Product Image -->
+                <div class="col-lg-7">
+                    <div class="product_image">
+                        <div class="product_image_large"><img width="652px" height="845px" id="image" alt=""></div>
+
+                    </div>
+                </div>
+                <form id="topay" >
+                <!-- Product Content -->
+                    <div class="col-lg-5">
+                        <div class="product_content">
+                            <div class="product_name" id="goodsName"></div>
+                            <div class="product_price" id="goodsPrice"></div>
+                            <div class="rating rating_4" data-rating="4">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <!-- In Stock -->
+                            <div class="in_stock_container">
+                                <span id="goodsStock"></span>
+                            </div>
+                            <div class="product_text" >
+                                <p id="goodsDesc"></p>
+                            </div>
+                            <!-- Product Quantity -->
+                            <div class="product_quantity_container">
+                                <span>数量</span>
+                                <div class="product_quantity clearfix">
+                                    <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                    <div class="quantity_buttons">
+                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Size -->
+                            <div>
+
+                                <div class="button cart_button" style="float: right; margin-right: -5px"><a href="/customer/tij_dingd">支付</a></div>
+                               <!-- <div class="button cart_button" style="float: left; margin-left: 200px"><a href="#">加入购物车</a></div>
+-->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Reviews -->
+
+            <div class="row">
+                <div class="col">
+                    <div class="reviews">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leave a Review -->
+
+            <div class="row">
+                <div class="col">
+                    <div class="review_form_container">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+
+    <div class="newsletter">
+        <div class="newsletter_content">
+            <div class="newsletter_image" style="background-image:url(/static/assets/images/newsletter.jpg)"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section_title_container text-center">
+                        </div>
+                    </div>
+                </div>
+                <div class="row newsletter_container">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="newsletter_form_container">
+                            <form action="#">
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="/static/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/static/assets/styles/bootstrap4/popper.js"></script>
+<script src="/static/assets/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/static/assets/plugins/easing/easing.js"></script>
+<script src="/static/assets/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/static/assets/js/product_custom.js"></script>
+<script>
+    $.ajax({
+        url: "/goods/form",
+        type: "POST",
+        success: function (data) {
+            if (data != "") {
+                $("#goodsName").text(data.goodsName);
+                $("#goodsPrice").text(data.goodsPrice+'元');
+                $("#goodsDesc").text(data.goodsDesc);
+                $("#goodsStock").text('库存'+data.goodsStock);
+                $("#image").attr("src",data.image);
+
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

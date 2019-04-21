@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgt.clothes.store.mapper.TbOrderMapper">
+    <sql id="orderColumns">
+          a.id,
+          a.order_id AS 'orderId',
+          a.customer_id AS 'customerId',
+          a.customer_name AS 'customerName',
+          a.total_money AS 'totalMoney',
+          a.order_state AS 'orderState',
+          a.created AS 'created',
+          a.updated AS 'updated'
+    </sql>
+    <!--联查语句-->
+    <!--根据id查数据-->
+    <select id="getById" resultType="TbOrder">
+        select
+        <include refid="orderColumns" />
+        from
+        tb_order As a
+        where
+        a.id=#{id}
+    </select>
+
+    <!--分页-->
+    <select id="page" resultType="TbOrder" >
+        SELECT
+        <include refid="orderColumns"/>
+        FROM
+        tb_order AS a
+        <where>
+            <if test="tbOrder != null and tbOrder.orderId != null and tbOrder.orderId != ''">
+                AND a.order_id LIKE CONCAT('%', #{tbOrder.orderId}, '%')
+            </if>
+            <if test="tbOrder != null and tbOrder.customerId != null and tbOrder.customerId != ''">
+                AND a.customer_id LIKE CONCAT('%', #{tbOrder.customerId}, '%')
+            </if>
+            <if test="tbOrder != null and tbOrder.customerName != null and tbOrder.customerName != ''">
+                AND a.customer_name LIKE CONCAT('%', #{tbOrder.customerName}, '%')
+            </if>
+            <if test="tbOrder != null and tbOrder.orderState != null and tbOrder.orderState != ''">
+                AND a.order_state LIKE CONCAT('%', #{tbOrder.orderState}, '%')
+            </if>
+            <if test="tbOrder != null and tbOrder.created != null and tbOrder.created != ''">
+                AND a.created LIKE CONCAT('%', #{tbOrder.created}, '%')
+            </if>
+            <if test="tbOrder != null and tbOrder.updated != null and tbOrder.updated != ''">
+                AND a.updated LIKE CONCAT('%', #{tbOrder.updated}, '%')
+            </if>
+
+        </where>
+        LIMIT #{start},#{length}
+    </select>
+
+    <!--获取总数据条数-->
+    <select id="count" resultType="Integer">
+         SELECT COUNT(*)
+        FROM
+          tb_order
+    </select>
+
+    <!-- 修改-->
+    <update id="update">
+        UPDATE
+            tb_order
+        SET
+            order_id = #{orderId},
+            customer_id = #{customerId},
+            customer_name = #{customerName},
+            total_money = #{totalMoney},
+            order_state = #{orderState},
+            created = #{created},
+            updated = #{updated}
+        WHERE id = #{id}
+    </update>
+
+    <!--删除-->
+    <delete id="del">
+        DELETE FROM tb_order
+        WHERE id=#{id}
+    </delete>
+
+    <insert id="add">
+        INSERT INTO tb_order
+        (
+             order_id,
+             customer_id,
+             customer_name,
+             total_money,
+             order_state,
+             created,
+             updated
+        )
+        VALUES
+        (
+            #{orderId},
+            #{customerId},
+            #{customerName},
+            #{totalMoney},
+            #{orderState},
+            #{created},
+            #{updated}
+        );
+    </insert>
+</mapper>

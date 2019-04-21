@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgt.clothes.store.mapper.TbGoodsTypeMapper">
+    <sql id="goodsTypeColumns">
+        a.id,
+        a.goods_type_name AS goodsTypeName,
+        a.parent_id AS parentId,
+        a.created,
+        a.updated
+    </sql>
+
+    <!--查询数据表中所有数据-->
+    <select id="selectAll" resultType="tbGoodsType">
+        select
+        <include refid="goodsTypeColumns" />
+        from
+        tb_goodstype As a
+    </select>
+
+</mapper>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Categories</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Wish shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/static/assets/styles/bootstrap4/bootstrap.min.css">
+<link href="/static/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/static/assets/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/static/assets/styles/categories.css">
+<link rel="stylesheet" type="text/css" href="/static/assets/styles/categories_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+	<!-- Header -->
+	<header class="header">
+		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
+			<div class="dengl_logo">
+				<img src="/static/assets/images/log.bmp"/>
+			</div>
+
+			<nav class="main_nav">
+				<ul>
+					<li><a href="index.html" style="font-size:18px">首页</a></li>
+					<li><a href="categories.html" style="font-size:18px">裙子</a></li>
+					<li><a href="categories.html" style="font-size:18px"> 裤子</a></li>
+					<li><a href="categories.html" style="font-size:18px">上衣</a></li>
+					<li><a href="categories.html" style="font-size:18px">外套</a></li>
+				</ul>
+			</nav>
+			<div class="header_content ml-auto">
+				<div class="search header_search">
+					<form action="#">
+						<input type="search" class="search_input" required="required">
+						<button type="submit" id="search_button" class="search_button"><img src="/static/assets/images/magnifying-glass.svg" alt=""></button>
+					</form>
+				</div>
+				<div class="shopping">
+					<!-- Cart -->
+					<a href="#">
+						<div class="cart">
+							<img src="/static/assets/images/shopping-bag.svg" alt="">
+							<div class="cart_num_container">
+								<div class="cart_num_inner">
+									<div class="cart_num">1</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					<!-- Star -->
+					<a href="#">
+						<div class="star">
+							<img src="/static/assets/images/star.svg" alt="">
+							<div class="star_num_container">
+								<div class="star_num_inner">
+									<div class="star_num">0</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					<!-- Avatar -->
+					<a href="#">
+						<div class="avatar">
+							<img src="/static/assets/images/avatar.svg" alt="">
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+		<div class="logo menu_mm"><a href="#">衣衣布社</a></div>
+		<div class="search">
+			<form action="#">
+				<input type="search" class="search_input menu_mm" required="required">
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="/static/assets/images/magnifying-glass.svg" alt=""></button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="/static/assets/images/categories.jpg" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_container">
+						<div class="home_content">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Products -->
+
+	<div class="products">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+
+					<div class="current_page">时尚女装</div>
+				</div>
+				
+			</div>
+
+			<div class="row products_container">
+				<div class="col">
+					<div class="product_grid">
+						<!-- Product -->
+						<div class="product">
+							<div class="product_image"><img id="image1" width="360px" height="538px"  ></div>
+							<div class="rating rating_4" data-rating="4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="/goods/product?id=4" id="goodsName1"></a></div>
+									<div class="product_price" id="goodsPrice1"></div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="/static/assets/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+						<!-- Product -->
+						<div class="product">
+							<div class="product_image"><img id="image2"  alt=""></div>
+							<div class="rating rating_4" data-rating="4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="/goods/product?id=5" id="goodsName2" width="360px" height="538px" ></a></div>
+									<div class="product_price" id="goodsPrice2"></div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="/static/assets/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<div class="product_image"><img id="image3" width="360px" height="538px" ></div>
+							<div class="rating rating_5" data-rating="5">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="product.html" id="goodsName3"></a></div>
+									<div class="product_price" id="goodsPrice3"></div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="/static/assets/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<div class="product_image"><img src="/static/assets/images/product_3.jpg" alt=""></div>
+							<div class="rating rating_3" data-rating="3">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+									<div class="product_price">$145.00</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="/static/assets/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<div class="product_image"><img src="/static/assets/images/product_4.jpg" alt=""></div>
+							<div class="rating rating_3" data-rating="3">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+									<div class="product_price">$145.00</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="/static/assets/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<div class="product_image"><img src="/static/assets/images/product_5.jpg" alt=""></div>
+							<div class="rating rating_3" data-rating="3">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
+									<div class="product_price">$145.00</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="/static/assets/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+
+			<div class="row page_num_container">
+				<div class="col text-right">
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="copyright">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> Colorlib -  More Templates - Collect from </a>
+</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<script src="/static/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/static/assets/styles/bootstrap4/popper.js"></script>
+<script src="/static/assets/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/static/assets/plugins/easing/easing.js"></script>
+<script src="/static/assets/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/static/assets/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/static/assets/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
+<script src="/static/assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="/static/assets/js/categories_custom.js"></script>
+<script src="/static/assets/plugins/datatables.js"></script>
+<script src="/static/assets/global/plugins/datatables/datatables.min.js"></script>
+<script src="/static/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+<script src="https://cdn.bootcss.com/jquery.serializeJSON/2.8.0/jquery.serializejson.min.js"></script>
+
+<script>
+	$(function () {
+    $.ajax({
+        type: "get",
+        url: "/goods/select",
+        dataType: "json",
+        success: function (data) {
+            var goodsData = data.data;
+			$("#image1").attr("src",goodsData[3].image);
+            $("#goodsName1").text(goodsData[3].goodsName);
+            $("#goodsPrice1").text(goodsData[3].goodsPrice+'元');
+
+            $("#image2").attr("src",goodsData[4].image);
+            $("#goodsName2").text(goodsData[4].goodsName);
+            $("#goodsPrice2").text(goodsData[4].goodsPrice+'元');
+
+            $("#image3").attr("src",goodsData[5].image);
+            $("#goodsName3").text(goodsData[5].goodsName);
+            $("#goodsPrice3").text(goodsData[5].goodsPrice+'元');
+
+
+
+
+        }
+    });
+    })
+
+
+</script>
+</body>
+</html>

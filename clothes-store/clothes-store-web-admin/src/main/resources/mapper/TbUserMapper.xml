@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgt.clothes.store.mapper.TbUserMapper">
+    <sql id="userColumns">
+          a.id,
+          a.username,
+          a.password,
+          a.phone,
+          a.image,
+          a.email,
+          a.salt,
+          a.created,
+          a.updated
+    </sql>
+    <!--联查语句-->
+    <sql id="userJoins">
+
+    </sql>
+    <!--根据登录ID获取数据表中数据-->
+    <select id="getByLoginId" resultType="TbUser">
+        SELECT
+        <include refid="userColumns" />
+        FROM
+        tb_user As a
+        WHERE
+        a.username = #{username} or a.phone = #{phone} or a.email = #{email}
+    </select>
+
+    <!--查询数据表中所有数据-->
+    <select id="selectAll" resultType="TbUser">
+        select
+        <include refid="userColumns" />
+        from
+        tb_user As a
+    </select>
+
+    <!--根据id查询数据-->
+    <select id="getById" resultType="TbUser">
+        select
+        <include refid="userColumns" />
+        from
+          tb_user As a
+        where
+          a.id=#{id}
+    </select>
+
+    <!-- 修改不用返回类型，就是不用从实体类中获取值 -->
+    <!-- 根据ID修改数据 -->
+    <select id="update" >
+        update tb_user
+        set
+        <if test="username !=null and username !='' ">
+            username=#{username},
+        </if>
+        <if test="password !=null and password !='' ">
+            password=#{password},
+        </if>
+        <if test="image !=null and image !='' ">
+            image=#{image},
+        </if>
+        <if test="email !=null and email !='' ">
+            email=#{email},
+        </if>
+        <if test="phone !=null and phone !='' ">
+            phone=#{phone},
+        </if>
+            updated=#{updated}
+        where
+            id=#{id}
+    </select>
+
+    <!--分页-->
+    <select id="page" resultType="TbUser" parameterType="Map">
+        SELECT
+        <include refid="userColumns"/>
+        FROM
+        tb_user AS a
+        <where>
+            <if test="tbUser != null and tbUser.username != null and tbUser.username != ''">
+                AND a.username LIKE CONCAT('%', #{tbUser.username}, '%')
+            </if>
+            <if test="tbUser != null and tbUser.phone != null and tbUser.phone != ''">
+                AND a.phone LIKE CONCAT('%', #{tbUser.phone}, '%')
+            </if>
+            <if test="tbUser != null and tbUser.email != null and tbUser.email != ''">
+                AND a.email LIKE CONCAT('%', #{tbUser.email}, '%')
+            </if>
+        </where>
+            LIMIT #{start},#{length}
+    </select>
+
+    <!--获取总数据条数-->
+    <select id="count" resultType="Integer">
+        SELECT COUNT(*)
+        FROM
+        tb_user AS a
+        <where>
+            <if test="username != null and username != ''">
+                AND a.username LIKE CONCAT('%', #{username}, '%')
+            </if>
+            <if test="phone != null and phone != ''">
+                AND a.phone LIKE CONCAT('%', #{phone}, '%')
+            </if>
+            <if test="email != null and email != ''">
+                AND a.email LIKE CONCAT('%', #{email}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 添加-->
+    <insert id="add">
+        INSERT INTO tb_user
+        (
+            username,
+            password,
+            phone,
+            email,
+            image,
+            created,
+            updated
+        )
+        VALUES
+        (
+            #{username},
+            #{password},
+            #{phone},
+            #{email},
+            #{image},
+            #{created},
+            #{updated}
+        );
+    </insert>
+
+    <!--删除-->
+    <delete id="del">
+        DELETE
+        FROM tb_user
+        WHERE
+        id = #{id}
+    </delete>
+
+    <!--批量删除-->
+    <delete id="batchDel">
+        DELETE
+        FROM tb_user
+        WHERE
+        id IN
+        <foreach collection="array" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

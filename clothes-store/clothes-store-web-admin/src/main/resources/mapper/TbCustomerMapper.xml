@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgt.clothes.store.mapper.TbCustomerMapper">
+    <sql id="customerColumns">
+          a.id,
+          a.customer_name AS customerName,
+          a.customer_password AS customerPassword,
+          a.true_name AS trueName,
+          a.customer_address AS customerAddress,
+          a.post_code AS postCode,
+          a.customer_phone AS customerPhone,
+          a.customer_email AS customerEmail,
+          a.salt,
+          a.created,
+          a.updated
+    </sql>
+    <!--联查语句-->
+    <sql id="customerJoins">
+
+    </sql>
+
+    <!--根据登录ID获取数据表中数据-->
+    <select id="getByLoginId" resultType="TbCustomer">
+        SELECT
+        <include refid="customerColumns" />
+        FROM
+          tb_customer As a
+        WHERE
+        a.customer_name = #{customerName} or a.customer_phone = #{customerPhone} or a.customer_email = #{customerEmail}
+    </select>
+
+    <!--查询数据表中所有数据-->
+    <select id="selectAll" resultType="TbCustomer">
+        select
+        <include refid="customerColumns" />
+        from
+          tb_customer As a
+    </select>
+
+    <!--根据id查询数据-->
+    <select id="getById" resultType="TbCustomer">
+        select
+        <include refid="customerColumns" />
+        from
+          tb_customer As a
+        where
+          a.id=#{id}
+    </select>
+
+    <!-- 修改不用返回类型，就是不用从实体类中获取值 -->
+    <!-- 根据ID修改数据 -->
+    <select id="update" >
+        update tb_customer
+        set
+            customer_name = #{customerName},
+            customer_password = #{customerPassword},
+            true_name = #{trueName},
+            customer_address = #{customerAddress},
+            post_code = #{postCode},
+            customer_phone = #{customerPhone},
+            created = #{created},
+            updated = #{updated},
+            customer_email = #{customerEmail}
+        where
+          id = #{id}
+    </select>
+
+    <!--分页-->
+    <select id="page" resultType="TbCustomer" parameterType="Map">
+        SELECT
+        <include refid="customerColumns"/>
+        FROM
+        tb_customer AS a
+        <where>
+            <if test="tbCustomer != null and tbCustomer.customerName != null and tbCustomer.customerName != ''">
+                AND a.customer_name LIKE CONCAT('%', #{tbCustomer.customerName}, '%')
+            </if>
+            <if test="tbCustomer != null and tbCustomer.trueName != null and tbCustomer.trueName != ''">
+                AND a.true_name LIKE CONCAT('%', #{tbCustomer.trueName}, '%')
+            </if>
+            <if test="tbCustomer != null and tbCustomer.customerEmail != null and tbCustomer.customerEmail != ''">
+                AND a.customer_email LIKE CONCAT('%', #{tbCustomer.customerEmail}, '%')
+            </if>
+        </where>
+          LIMIT #{start},#{length}
+    </select>
+
+    <!--获取总数据条数-->
+    <select id="count" resultType="Integer">
+        SELECT COUNT(*)
+        FROM
+        tb_customer
+    </select>
+
+    <!-- 添加-->
+    <insert id="add">
+        INSERT INTO tb_customer
+        (
+             customer_name,
+             customer_password,
+             true_name,
+             customer_address,
+             post_code,
+             customer_phone ,
+             customer_email,
+             salt,
+             created,
+             updated
+        )
+        VALUES
+        (
+            #{customerName},
+            #{customerPassword},
+            #{trueName},
+            #{customerAddress},
+            #{postCode},
+            #{customerPhone},
+            #{customerEmail},
+            #{salt},
+            #{created},
+            #{updated}
+        );
+    </insert>
+
+    <!--删除-->
+    <delete id="del">
+        DELETE
+        FROM tb_customer
+        WHERE
+          id = #{id}
+    </delete>
+
+    <!--批量删除-->
+    <delete id="batchDel">
+        DELETE
+        FROM tb_customer
+        WHERE
+        id IN
+        <foreach collection="array" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
